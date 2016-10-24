@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +16,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yQJ-tu-irI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hueCell" id="yQJ-tu-irI" customClass="HueTableViewCell" customModule="Hue" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQJ-tu-irI" id="hPm-wF-4LP">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HueID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-lL-4Rb">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="53" id="WIT-dU-7d8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M9-BF-gAQ">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="IYe-Qp-Ub8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ceg-lL-4Rb" firstAttribute="top" secondItem="hPm-wF-4LP" secondAttribute="topMargin" constant="4" id="BZz-BJ-CH0"/>
+                                        <constraint firstItem="6M9-BF-gAQ" firstAttribute="trailing" secondItem="hPm-wF-4LP" secondAttribute="trailingMargin" id="J4a-Fz-P2S"/>
+                                        <constraint firstItem="ceg-lL-4Rb" firstAttribute="leading" secondItem="hPm-wF-4LP" secondAttribute="leadingMargin" id="gxu-C0-41R"/>
+                                        <constraint firstItem="6M9-BF-gAQ" firstAttribute="centerY" secondItem="hPm-wF-4LP" secondAttribute="centerY" id="i9U-8m-OPH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblID" destination="ceg-lL-4Rb" id="9Fz-eg-NYC"/>
+                                    <outlet property="lblState" destination="6M9-BF-gAQ" id="ALQ-5r-RuH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,7 +61,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncD-1C-hDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="0.0"/>
+            <point key="canvasLocation" x="32.799999999999997" y="-0.44977511244377816"/>
         </scene>
     </scenes>
 </document>

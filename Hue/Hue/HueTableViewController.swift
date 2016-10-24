@@ -17,7 +17,8 @@ class HueTableViewController: UITableViewController {
     
     func getHues() {
         
-        let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
+//        let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
+            let url = "http://192.168.2.27:80/api/newdeveloper/lights"
 
         
         Alamofire.request(url,
@@ -25,43 +26,33 @@ class HueTableViewController: UITableViewController {
                           encoding: URLEncoding.default).responseJSON { (responseData) -> Void in
                             if((responseData.result.value) != nil) {
                                 let results = JSON(responseData.result.value!)
-                                print(results)
+//                                print(results)
                                 
-                                let hue = Hue()
                                 for(key, result) in results {
+                                    let hue = Hue()
                                     let id = Int(key)
+                                    
+                                    for subJson in result["state"] {
+                                        print(subJson["bri"].stringValue)
+                
+                                    }
+                                        
+                            
                                     let on = result["on"].bool
-                                    let bri = result["bri"].int
+//                                    let bri = result["bri"].int
                                     
                                     hue.id = id!
-                                    hue.bri = bri!
-                                    hue.on = on!
+//                                    hue.bri = bri!
+//                                    hue.on = on!
                                     
                                     self.hues.append(hue)
                                     
                                     self.tableView.reloadData()
-//                                    if let name = subJson["name"].string {
-//                                        print(name)
-//                                    } else {
-//                                        print("Niets")
-//                                    }
+
                                 }
            
                             }
                             
-//                            if let json = JSON(response.result.value) {
-//                                print("Json : \(json)")
-//                                let hue = Hue()
-                            
-                                
-//                                for j in json {
-//                                    let resultIndex = j.index(of: 0)
-//                                    print("Lampje : \(resultIndex)")
-//                                }
-
-//                                let result = results[0] as! NSDictionary
-                                
-//                                print("Results : \(results)")
                                 
                             
                             
@@ -91,13 +82,15 @@ class HueTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let row = (indexPath as NSIndexPath).row
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
+           cell.lblID.text = String(hues[row].id)
+//           cell.lblState.text = String(hues[row].on)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonTableViewCell
-            cell.personFirstName.text = persons[row].mFirstName
-            cell.personLastName.text = persons[row].mLastName
-            cell.personEmail.text = persons[row].mEmail
-     
+        return cell;
         }
+    
+    
     }
 
-}
+

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0ED311A2F7C76419D9A8EDA0 /* Pods_Hue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043D12178C03EAD133DD6B7E /* Pods_Hue.framework */; };
 		678281C489511848F9EEA9B8 /* Pods_HueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0497210299BBEBB8179E14D2 /* Pods_HueTests.framework */; };
+		8D311D531DBE585E008B7CCB /* HueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D311D521DBE585E008B7CCB /* HueTableViewCell.swift */; };
 		A230522F8572CAF6CE1BCC25 /* Pods_HueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3C2B4D18AF4E080AE71669 /* Pods_HueUITests.framework */; };
 		A27C54231DBE12D100C8A355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C54221DBE12D100C8A355 /* AppDelegate.swift */; };
 		A27C54251DBE12D200C8A355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C54241DBE12D200C8A355 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		3E431A1C1F6325EA72AC2FED /* Pods-Hue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hue/Pods-Hue.release.xcconfig"; sourceTree = "<group>"; };
 		3F7E6374CC2721F68333725E /* Pods-HueTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HueTests/Pods-HueTests.release.xcconfig"; sourceTree = "<group>"; };
 		4330180897795D193F5DC79F /* Pods-HueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HueUITests/Pods-HueUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D311D521DBE585E008B7CCB /* HueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueTableViewCell.swift; sourceTree = "<group>"; };
 		A21F236FE4F29BE19D93BBD2 /* Pods-HueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HueTests/Pods-HueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A27C541F1DBE12D100C8A355 /* Hue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27C54221DBE12D100C8A355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				A27C542E1DBE12D200C8A355 /* Info.plist */,
 				A27C54501DBE148600C8A355 /* HueTableViewController.swift */,
 				A27C54521DBE222500C8A355 /* Hue.swift */,
+				8D311D521DBE585E008B7CCB /* HueTableViewCell.swift */,
 			);
 			path = Hue;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27C54251DBE12D200C8A355 /* ViewController.swift in Sources */,
+				8D311D531DBE585E008B7CCB /* HueTableViewCell.swift in Sources */,
 				A27C54231DBE12D100C8A355 /* AppDelegate.swift in Sources */,
 				A27C54531DBE222500C8A355 /* Hue.swift in Sources */,
 				A27C54511DBE148600C8A355 /* HueTableViewController.swift in Sources */,
