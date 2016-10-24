@@ -24,15 +24,27 @@ class HueTableViewController: UITableViewController {
                           method: .get,
                           encoding: URLEncoding.default).responseJSON { (responseData) -> Void in
                             if((responseData.result.value) != nil) {
-                                let swiftyJsonVar = JSON(responseData.result.value!)
-                                print(swiftyJsonVar)
+                                let results = JSON(responseData.result.value!)
+                                print(results)
                                 
-                                for(key, subJson) in swiftyJsonVar {
-                                    if let name = subJson["name"].string {
-                                        print(name)
-                                    } else {
-                                        print("Niets")
-                                    }
+                                let hue = Hue()
+                                for(key, result) in results {
+                                    let id = Int(key)
+                                    let on = result["on"].bool
+                                    let bri = result["bri"].int
+                                    
+                                    hue.id = id!
+                                    hue.bri = bri!
+                                    hue.on = on!
+                                    
+                                    self.hues.append(hue)
+                                    
+                                    self.tableView.reloadData()
+//                                    if let name = subJson["name"].string {
+//                                        print(name)
+//                                    } else {
+//                                        print("Niets")
+//                                    }
                                 }
            
                             }
@@ -74,6 +86,18 @@ class HueTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hues.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let row = (indexPath as NSIndexPath).row
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonTableViewCell
+            cell.personFirstName.text = persons[row].mFirstName
+            cell.personLastName.text = persons[row].mLastName
+            cell.personEmail.text = persons[row].mEmail
+     
+        }
     }
 
 }
