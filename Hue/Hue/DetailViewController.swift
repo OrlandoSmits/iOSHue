@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         sliderBri.setValue(Float((hue?.brightness)!), animated: false)
        sliderSat.setValue(Float((hue?.sat)!), animated: false)
-        
+                
         
         // Do any additional setup after loading the view.
     }
