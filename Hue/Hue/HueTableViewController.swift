@@ -34,7 +34,7 @@ class HueTableViewController: UITableViewController {
                                     let bri = result["state"]["bri"].int
                                     
                                     hue.id = id!
-                                    hue.bri = bri!
+                                    hue.brightness = bri!
                                     hue.on = on!
                                     
                                     self.hues.append(hue)
@@ -84,6 +84,16 @@ class HueTableViewController: UITableViewController {
         return cell;
         }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "hueDetail" {
+            if let destination = segue.destination as? DetailViewController {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let hue = hues[(indexPath as NSIndexPath).row]
+                    destination.hue = hue
+                }
+            }
+        }
+    }
     
     }
 

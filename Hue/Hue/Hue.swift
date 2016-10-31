@@ -12,8 +12,9 @@ import UIKit
 class Hue {
     var id = String()
     var on = Bool()
-    var bri = Int()
+    var brightness = Int()
     var effect = String()
+    var hue = Int()
     var x = Float()
     var y = Float()
     
@@ -31,9 +32,20 @@ class Hue {
         on = false
     }
     
-//    func changeBrightness(url: String, bri: Int){
-//        let parameter
-//    }
+    func changeBrightness(url: String, bri: Int){
+        print("Input \(bri)")
+        print("Url \(url)")
+        let parameters = ["bri": bri]
+           print("Parameters \(parameters)")
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        brightness = bri
+    }
+    
+    func setColor(url: String, hue: Int){
+        let parameters = ["hue": hue]
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        self.hue = hue
+    }
     
     
 }
