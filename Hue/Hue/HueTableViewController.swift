@@ -12,8 +12,7 @@ import SwiftyJSON
 
 class HueTableViewController: UITableViewController {
     
-    var hues: [Hue] = []
-    
+    var hues: [Hue] = []  
 
     func getHues() {
         
@@ -30,7 +29,7 @@ class HueTableViewController: UITableViewController {
                                 
                                 for(key, result) in results {
                                     let hue = Hue()
-                                    let id = Int(key)
+                                    let id = String(key)
                                     let on = result["state"]["on"].bool
                                     let bri = result["state"]["bri"].int
                                     
@@ -76,8 +75,9 @@ class HueTableViewController: UITableViewController {
         let row = (indexPath as NSIndexPath).row
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
-           cell.lblID.text = String(hues[row].id)
+           cell.lblID.text = hues[row].id
            cell.switchOnOff.setOn(hues[row].on, animated: false)
+           cell.HueId = hues[row].id
                 
         
         

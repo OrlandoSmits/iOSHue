@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Hue {
-    var id = Int()
+    var id = String()
     var on = Bool()
     var bri = Int()
     var effect = String()

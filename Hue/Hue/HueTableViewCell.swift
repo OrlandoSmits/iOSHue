@@ -12,14 +12,15 @@ class HueTableViewCell: UITableViewCell {
     
     @IBOutlet var lblID: UILabel!
     @IBOutlet var switchOnOff: UISwitch!
+    var HueId : String = "";
     
     @IBAction func stateBtnClicked(_ sender: AnyObject) {
         if switchOnOff.isOn{
             let hue = Hue()
-            hue.turnOn(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/11/state/")
+            hue.turnOn(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(HueId)/state/")
         } else {
             let hue = Hue()
-            hue.turnOff(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/11/state/")
+            hue.turnOff(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(HueId)/state/")
 
         }
         
