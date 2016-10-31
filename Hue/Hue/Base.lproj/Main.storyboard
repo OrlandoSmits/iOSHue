@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pRH-XL-WrG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OVF-Wo-C4G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="g72-2e-E3T">
+            <objects>
+                <navigationController id="OVF-Wo-C4G" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uR2-MQ-ktE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pRH-XL-WrG" kind="relationship" relationship="rootViewController" id="o3B-ll-n7b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9UU-WO-rRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-852" y="0.0"/>
+        </scene>
         <!--Hue Table View Controller-->
         <scene sceneID="ise-AG-cn6">
             <objects>
@@ -17,7 +33,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hueCell" rowHeight="68" id="yQJ-tu-irI" customClass="HueTableViewCell" customModule="Hue" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQJ-tu-irI" id="hPm-wF-4LP">
                                     <frame key="frameInset" width="375" height="67"/>
@@ -57,6 +73,7 @@
                             <outlet property="delegate" destination="pRH-XL-WrG" id="IIE-a5-GtJ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Qc5-nU-VST"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncD-1C-hDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

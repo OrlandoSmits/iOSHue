@@ -15,7 +15,6 @@ class DetailViewController: UIViewController {
         let bri = Int(sliderBri.value)
       
         hue?.changeBrightness(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", bri: bri)
-        
     }
     
     var hue : Hue?
