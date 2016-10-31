@@ -37,8 +37,8 @@ class HueTableViewController: UITableViewController {
     }
     func getHues() {
         
-//        let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
-            let url = "http://192.168.2.27:80/api/newdeveloper/lights"
+        let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
+//            let url = "http://192.168.2.27:80/api/newdeveloper/lights"
 
         
         Alamofire.request(url,
@@ -52,18 +52,16 @@ class HueTableViewController: UITableViewController {
                                     let hue = Hue()
                                     let id = Int(key)
                                     
-                                    let state = self.getState(par: key)
-//                                    print(state)
+                
                                     
-                                        
-                            
+                                    
                                     let on = result["state"]["on"].bool
                                     print(on)
 //                                    let bri = result["bri"].int
                                     
                                     hue.id = id!
 //                                    hue.bri = bri!
-//                                    hue.on = on!
+                                    hue.on = on!
                                     
                                     self.hues.append(hue)
                                     
@@ -105,7 +103,7 @@ class HueTableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
            cell.lblID.text = String(hues[row].id)
-//           cell.lblState.text = String(hues[row].on)
+           cell.lblState.text = String(hues[row].on)
         
         return cell;
         }
