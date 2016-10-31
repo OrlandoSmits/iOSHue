@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pRH-XL-WrG">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pRH-XL-WrG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -11,29 +11,29 @@
         <scene sceneID="ise-AG-cn6">
             <objects>
                 <tableViewController id="pRH-XL-WrG" customClass="HueTableViewController" customModule="Hue" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="McW-61-AST">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" id="McW-61-AST">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hueCell" id="yQJ-tu-irI" customClass="HueTableViewCell" customModule="Hue" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hueCell" rowHeight="68" id="yQJ-tu-irI" customClass="HueTableViewCell" customModule="Hue" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQJ-tu-irI" id="hPm-wF-4LP">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="67"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HueID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-lL-4Rb">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="se2-VT-jdp">
+                                            <frame key="frameInset" minX="318" minY="18" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="stateBtnClicked:" destination="yQJ-tu-irI" eventType="valueChanged" id="k09-88-zfx"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HueID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-lL-4Rb">
+                                            <frame key="frameInset" minX="8" minY="23" width="53" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="WIT-dU-7d8"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M9-BF-gAQ">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="IYe-Qp-Ub8"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -42,14 +42,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="ceg-lL-4Rb" firstAttribute="top" secondItem="hPm-wF-4LP" secondAttribute="topMargin" constant="4" id="BZz-BJ-CH0"/>
-                                        <constraint firstItem="6M9-BF-gAQ" firstAttribute="trailing" secondItem="hPm-wF-4LP" secondAttribute="trailingMargin" id="J4a-Fz-P2S"/>
                                         <constraint firstItem="ceg-lL-4Rb" firstAttribute="leading" secondItem="hPm-wF-4LP" secondAttribute="leadingMargin" id="gxu-C0-41R"/>
-                                        <constraint firstItem="6M9-BF-gAQ" firstAttribute="centerY" secondItem="hPm-wF-4LP" secondAttribute="centerY" id="i9U-8m-OPH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblID" destination="ceg-lL-4Rb" id="9Fz-eg-NYC"/>
-                                    <outlet property="lblState" destination="6M9-BF-gAQ" id="ALQ-5r-RuH"/>
+                                    <outlet property="switchOnOff" destination="se2-VT-jdp" id="dke-17-iBx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

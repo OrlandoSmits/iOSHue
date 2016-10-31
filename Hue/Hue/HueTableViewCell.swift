@@ -11,11 +11,22 @@ import UIKit
 class HueTableViewCell: UITableViewCell {
     
     @IBOutlet var lblID: UILabel!
-    @IBOutlet var lblState: UILabel!
+    @IBOutlet var switchOnOff: UISwitch!
+    
+    @IBAction func stateBtnClicked(_ sender: AnyObject) {
+        if switchOnOff.isOn{
+            // Zet lamp aan
+        } else {
+            // Zet lamp uit
+        }
+        
+    
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

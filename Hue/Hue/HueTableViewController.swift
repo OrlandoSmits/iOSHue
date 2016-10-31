@@ -23,6 +23,7 @@ class HueTableViewController: UITableViewController {
                           encoding: URLEncoding.default).responseJSON { (responseData) -> Void in
                             if((responseData.result.value) != nil) {
                                 let results = JSON(responseData.result.value!)
+                                
                                 for(key, result) in results["lights"] {
                                     for light in result {
 //                                        let on = light["state"]["on"].bool                                  
@@ -51,16 +52,11 @@ class HueTableViewController: UITableViewController {
                                 for(key, result) in results {
                                     let hue = Hue()
                                     let id = Int(key)
-                                    
-                
-                                    
-                                    
                                     let on = result["state"]["on"].bool
-                                    print(on)
-//                                    let bri = result["bri"].int
+                                    let bri = result["state"]["bri"].int
                                     
                                     hue.id = id!
-//                                    hue.bri = bri!
+                                    hue.bri = bri!
                                     hue.on = on!
                                     
                                     self.hues.append(hue)
@@ -71,7 +67,6 @@ class HueTableViewController: UITableViewController {
            
                             }
                             
-                                
                             
                             
         }
@@ -103,7 +98,7 @@ class HueTableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
            cell.lblID.text = String(hues[row].id)
-           cell.lblState.text = String(hues[row].on)
+           cell.switchOnOff.setOn(hues[row].on, animated: false)
         
         return cell;
         }
