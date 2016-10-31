@@ -14,6 +14,7 @@ class Hue {
     var on = Bool()
     var brightness = Int()
     var effect = String()
+    var sat = Int()
     var hue = Int()
     var x = Float()
     var y = Float()
@@ -45,6 +46,21 @@ class Hue {
         let parameters = ["hue": hue]
         ah.doRequest(url: url, parameters: parameters, method: .put)
         self.hue = hue
+    }
+    
+    func changeSaturation(url: String, sat: Int){
+        let parameters = ["sat": sat]
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        self.sat = sat
+    }
+    
+    func setColorloop(url: String, b: Bool){
+        var parameters = ["effect": "colorloop"]
+        if !b {
+           parameters = ["effect": "none"]
+        }
+     
+        ah.doRequest(url: url, parameters: parameters, method: .put)
     }
     
     
