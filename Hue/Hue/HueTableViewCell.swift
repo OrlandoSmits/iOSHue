@@ -15,9 +15,12 @@ class HueTableViewCell: UITableViewCell {
     
     @IBAction func stateBtnClicked(_ sender: AnyObject) {
         if switchOnOff.isOn{
-            // Zet lamp aan
+            let hue = Hue()
+            hue.turnOn(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/11/state/")
         } else {
-            // Zet lamp uit
+            let hue = Hue()
+            hue.turnOff(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/11/state/")
+
         }
         
     

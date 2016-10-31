@@ -16,4 +16,24 @@ class Hue {
     var effect = String()
     var x = Float()
     var y = Float()
+    
+    let ah = AlamofireHandler()
+    
+    func turnOn(url: String){
+        let parameters = ["on": true]
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        on = true
+    }
+    
+    func turnOff(url: String){
+        let parameters = ["on": false]
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        on = false
+    }
+    
+//    func changeBrightness(url: String, bri: Int){
+//        let parameter
+//    }
+    
+    
 }

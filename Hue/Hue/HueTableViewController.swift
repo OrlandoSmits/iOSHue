@@ -14,28 +14,7 @@ class HueTableViewController: UITableViewController {
     
     var hues: [Hue] = []
     
-    func getState(par: String)
-    {
 
-        let url = "http://192.168.2.27:80/api/newdeveloper/lights/\(par)/state"
-        Alamofire.request(url,
-                          method: .get,
-                          encoding: URLEncoding.default).responseJSON { (responseData) -> Void in
-                            if((responseData.result.value) != nil) {
-                                let results = JSON(responseData.result.value!)
-                                
-                                for(key, result) in results["lights"] {
-                                    for light in result {
-//                                        let on = light["state"]["on"].bool                                  
-                                    }
-                                
-                                }
-                            }
-                            
-        }
-        
-
-    }
     func getHues() {
         
         let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
@@ -99,6 +78,8 @@ class HueTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
            cell.lblID.text = String(hues[row].id)
            cell.switchOnOff.setOn(hues[row].on, animated: false)
+                
+        
         
         return cell;
         }
