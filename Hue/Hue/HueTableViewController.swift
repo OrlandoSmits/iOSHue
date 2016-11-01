@@ -30,12 +30,15 @@ class HueTableViewController: UITableViewController {
                                 for(key, result) in results {
                                     let hue = Hue()
                                     let id = String(key)
+                                    let name = result["name"].string
                                     let on = result["state"]["on"].bool
                                     let bri = result["state"]["bri"].int
                                     
                                     hue.id = id!
+                                    hue.name = name!
                                     hue.brightness = bri!
                                     hue.on = on!
+                                    
                                     
                                     self.hues.append(hue)
                                     
@@ -75,7 +78,7 @@ class HueTableViewController: UITableViewController {
         let row = (indexPath as NSIndexPath).row
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
-           cell.lblID.text = hues[row].id
+           cell.lblID.text = hues[row].name
            cell.switchOnOff.setOn(hues[row].on, animated: false)
            cell.HueId = hues[row].id
                 

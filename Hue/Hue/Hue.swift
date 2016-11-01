@@ -13,6 +13,7 @@ class Hue {
     var id = String()
     var on = Bool()
     var brightness = Int()
+    var name = String()
     var effect = String()
     var sat = Int()
     var hue = Int()
@@ -60,6 +61,14 @@ class Hue {
            parameters = ["effect": "none"]
         }
      
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+    }
+    
+    func setAlert(url: String, b: Bool){
+        var parameters = ["alert": "lselect"]
+        if !b {
+            parameters = ["alert": "none"]
+            }
         ah.doRequest(url: url, parameters: parameters, method: .put)
     }
     
