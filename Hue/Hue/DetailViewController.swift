@@ -17,36 +17,40 @@ class DetailViewController: UIViewController {
     @IBOutlet var lblHueName: UILabel!
     @IBOutlet var btnAlertTrue: UIButton!
     @IBOutlet var btnAlertFalse: UIButton!
+    
+    var baseUrl: String = ""
+    var username: String = ""
+    
 
     @IBAction func sliderBriValueChanged(_ sender: UISlider) {
                 let bri = Int(sliderBri.value)
         
-                hue?.changeBrightness(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", bri: bri)
+                hue?.changeBrightness(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", bri: bri)
     }
     
     @IBAction func sliderSatValueChanged(_ sender: UISlider) {
                 let sat = Int(sliderSat.value)
-                hue?.changeSaturation(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", sat: sat)
+                hue?.changeSaturation(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", sat: sat)
     }
     @IBAction func sliderHueValueChanged(_ sender: UISlider) {
                 let mHue = Int(sliderHue.value)
-        hue?.setColor(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", hue: mHue)
+        hue?.setColor(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", hue: mHue)
     }
     
     @IBAction func btnTrueOnClick(_ sender: UIButton) {
-        hue?.setColorloop(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", b: true)
+        hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
     }
     
     @IBAction func btnFalseOnClick(_ sender: UIButton) {
-        hue?.setColorloop(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", b: false)
+        hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
     }
 
     @IBAction func btnTrueClick(_ sender: UIButton) {
-        hue?.setAlert(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", b: true)
+        hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
     }
     
     @IBAction func btnFalseClick(_ sender: UIButton) {
-                hue?.setAlert(url: "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights/\(hue!.id)/state/", b: false)
+                hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
     }
     var hue : Hue?
 

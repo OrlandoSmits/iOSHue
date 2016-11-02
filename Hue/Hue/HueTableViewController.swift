@@ -12,20 +12,21 @@ import SwiftyJSON
 
 class HueTableViewController: UITableViewController {
     
-    var hues: [Hue] = []  
+    var hues: [Hue] = []
+    var baseUrl: String = ""
+    var username: String = ""
 
-    func getHues() {
-        
-        let url = "http://192.168.1.179/api/80b8a9620291a47fec92fa34484f5b/lights"
-//            let url = "http://192.168.2.27:80/api/newdeveloper/lights"
 
-        
+    func getHues(url: String, username: String) {
+       
+        let url = "\(url)\(username)/lights"
+        print(url)
+
         Alamofire.request(url,
                           method: .get,
                           encoding: URLEncoding.default).responseJSON { (responseData) -> Void in
                             if((responseData.result.value) != nil) {
                                 let results = JSON(responseData.result.value!)
-//                                print(results)
                                 
                                 for(key, result) in results {
                                     let hue = Hue()
@@ -42,13 +43,10 @@ class HueTableViewController: UITableViewController {
                                     
                                     self.hues.append(hue)
                                     
-                                    self.tableView.reloadData()
-
+                                   
                                 }
-           
+                                self.tableView.reloadData()
                             }
-                            
-                            
                             
         }
         
@@ -57,7 +55,7 @@ class HueTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getHues()
+        getHues(url: self.baseUrl, username: self.username)
 
     }
 
@@ -74,15 +72,17 @@ class HueTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        tableView.isUserInteractionEnabled = true
         let row = (indexPath as NSIndexPath).row
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "hueCell", for: indexPath) as! HueTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hueViewCell", for: indexPath)
+            as! HueTableViewCell
+        
            cell.lblID.text = hues[row].name
            cell.switchOnOff.setOn(hues[row].on, animated: false)
            cell.HueId = hues[row].id
-                
-        
+           cell.baseUrl = self.baseUrl
+           cell.username = self.username
         
         return cell;
         }
@@ -93,6 +93,8 @@ class HueTableViewController: UITableViewController {
                 if let indexPath = self.tableView.indexPathForSelectedRow {
                     let hue = hues[(indexPath as NSIndexPath).row]
                     destination.hue = hue
+                    destination.baseUrl = self.baseUrl
+                    destination.username = self.username
                 }
             }
         }
