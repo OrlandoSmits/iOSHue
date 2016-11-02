@@ -72,5 +72,12 @@ class Hue {
         ah.doRequest(url: url, parameters: parameters, method: .put)
     }
     
+    func setDisco(url: String){
+        let parameters = ["effect": "colorloop", "alert": "lselect"]
+        
+        ah.doRequest(url: url, parameters: parameters, method: .put)
+        
+    }
+    
     
 }

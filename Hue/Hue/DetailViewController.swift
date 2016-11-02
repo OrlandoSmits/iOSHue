@@ -24,16 +24,18 @@ class DetailViewController: UIViewController {
 
     @IBAction func sliderBriValueChanged(_ sender: UISlider) {
                 let bri = Int(sliderBri.value)
-        
+                print("Brightness: \(bri)")
                 hue?.changeBrightness(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", bri: bri)
     }
     
     @IBAction func sliderSatValueChanged(_ sender: UISlider) {
                 let sat = Int(sliderSat.value)
+                print("Saturation: \(sat)")
                 hue?.changeSaturation(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", sat: sat)
     }
     @IBAction func sliderHueValueChanged(_ sender: UISlider) {
                 let mHue = Int(sliderHue.value)
+                print("Hue: \(mHue)")
         hue?.setColor(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", hue: mHue)
     }
     
@@ -56,8 +58,10 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sliderBri.setValue(Float((hue?.brightness)!), animated: false)
-       sliderSat.setValue(Float((hue?.sat)!), animated: false)
+        sliderBri.setValue(Float((hue!.brightness)), animated: false)
+        sliderSat.setValue(Float((hue!.sat)), animated: false)
+        print("Hue: \(hue?.hue)")
+        sliderHue.setValue(Float((hue!.hue)), animated: false)
         lblHueName.text = hue!.name
                 
         
@@ -69,5 +73,8 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        hue?.setDisco(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/")
+    }
 
 }

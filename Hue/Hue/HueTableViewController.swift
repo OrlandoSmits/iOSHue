@@ -34,7 +34,11 @@ class HueTableViewController: UITableViewController {
                                     let name = result["name"].string
                                     let on = result["state"]["on"].bool
                                     let bri = result["state"]["bri"].int
+                                    let sat = result["state"]["sat"].int
+                                    print(sat)
                                     
+                                    let mHue = result["state"]["hue"].int
+                                    print(mHue)
                                     hue.id = id!
                                     hue.name = name!
                                     hue.brightness = bri!
