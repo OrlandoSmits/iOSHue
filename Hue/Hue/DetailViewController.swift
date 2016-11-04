@@ -12,15 +12,28 @@ class DetailViewController: UIViewController {
     @IBOutlet var sliderBri: UISlider!
     @IBOutlet var sliderSat: UISlider!
     @IBOutlet var sliderHue: UISlider!
-    @IBOutlet var btnColorloopTrue: UIButton!
-    @IBOutlet var btnColorloopFalse: UIButton!
     @IBOutlet var lblHueName: UILabel!
-    @IBOutlet var btnAlertTrue: UIButton!
-    @IBOutlet var btnAlertFalse: UIButton!
+    @IBOutlet var switchColorLoop: UISwitch!
+    @IBOutlet weak var switchAlert: UISwitch!
     
     var baseUrl: String = ""
     var username: String = ""
     
+    @IBAction func switchAlertToggle(_ sender: UISwitch) {
+        if(sender.isOn){
+            hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
+        } else {
+            hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
+        }
+    }
+    
+    @IBAction func switchToggle(_ sender: UISwitch) {
+        if(sender.isOn){
+            hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
+        } else {
+            hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
+        }
+    }
 
     @IBAction func sliderBriValueChanged(_ sender: UISlider) {
                 let bri = Int(sliderBri.value)
@@ -37,22 +50,6 @@ class DetailViewController: UIViewController {
                 let mHue = Int(sliderHue.value)
                 print("Hue: \(mHue)")
         hue?.setColor(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", hue: mHue)
-    }
-    
-    @IBAction func btnTrueOnClick(_ sender: UIButton) {
-        hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
-    }
-    
-    @IBAction func btnFalseOnClick(_ sender: UIButton) {
-        hue?.setColorloop(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
-    }
-
-    @IBAction func btnTrueClick(_ sender: UIButton) {
-        hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: true)
-    }
-    
-    @IBAction func btnFalseClick(_ sender: UIButton) {
-                hue?.setAlert(url: "\(baseUrl)\(username)/lights/\(hue!.id)/state/", b: false)
     }
     var hue : Hue?
 
